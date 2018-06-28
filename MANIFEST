@@ -1,0 +1,7 @@
+README.md
+Changes
+Makefile.PL
+t/ProhibitAmbiguousFunctionCalls.t
+lib/Perl/Critic/Policy/Subroutines/ProhibitAmbiguousFunctionCalls.pm
+MANIFEST
+.travis.yml

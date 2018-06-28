@@ -6,19 +6,17 @@ use strict;
 use warnings;
 use Test::More;
 use Test::Deep;
-use File::Spec;
 
 use Perl::Critic;
 
-my @selfdirs = File::Spec->splitdir($0);
-(my $policy = $selfdirs[-1]) =~ s/\.t//;
-my $longpolicy = join '::' => $selfdirs[-2], $policy;
+my $policy = 'Subroutines::ProhibitAmbiguousFunctionCalls';
+(my $shortpolicy = $policy) =~ s/.*:://;
 
-my $c = Perl::Critic->new( -"single-policy" => $policy);
+my $c = Perl::Critic->new( -"single-policy" => $shortpolicy);
 
 my $test = 'Only checking a single policy';
 my @list = map { "$_" } $c->policies();
-cmp_deeply(\@list, [$longpolicy], $test);
+cmp_deeply(\@list, [$policy], $test);
 
 $test = 'Policy is not triggered by a normal function call';
 my $string = 'print Foo::Bar';
