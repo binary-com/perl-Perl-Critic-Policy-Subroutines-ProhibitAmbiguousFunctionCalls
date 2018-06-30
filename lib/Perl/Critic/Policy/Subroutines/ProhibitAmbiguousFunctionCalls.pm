@@ -2,7 +2,6 @@ package Perl::Critic::Policy::Subroutines::ProhibitAmbiguousFunctionCalls;
 
 use strict;
 use warnings;
-use Readonly;
 use Digest::MD5;
 
 use Perl::Critic::Utils qw{ :severities };
@@ -10,8 +9,8 @@ use base 'Perl::Critic::Policy';
 
 our $VERSION = '1.002';
 
-Readonly::Scalar my $DESC => q{Fully qualified functions calls should end in parens.};
-Readonly::Scalar my $EXPL => q{To differentiate from class methods and function calls, use Foo:Bar::baz()->gimble};
+use constant DESC => q{Fully qualified functions calls should end in parens.};
+use constant EXPL => q{To differentiate from class methods and function calls, use Foo:Bar::baz()->gimble};
 
 use constant default_severity => $SEVERITY_HIGH;
 use constant default_themes   => qw( core );
@@ -60,7 +59,7 @@ sub violates {
 
     ## If we have already marked this one, return a violation
     if ($docinfo->{$file}{$elemid}) {
-        return $self->violation($DESC, $EXPL, $elem);
+        return $self->violation(DESC, EXPL, $elem);
     }
 
     return;
