@@ -40,6 +40,9 @@ sub violates {
     ## Workaround a slight bug in Perl::Critic
     return if ref $elem eq 'PPI::Statement::Null';
 
+    ## We never want to consider elements in the END section
+    return if ref $elem eq 'PPI::Statement::End';
+
     ## We may not have a filename, so we need some unique identifier
     $file = $doc->filename() // Digest::MD5::md5_hex($doc->content());
 
