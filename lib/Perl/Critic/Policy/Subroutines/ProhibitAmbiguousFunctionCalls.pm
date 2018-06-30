@@ -112,6 +112,9 @@ sub _kidwalk {
         ## Some nodes do not have children, but if they do, recurse through them
         $self->_kidwalk($kid) if $kid->can('schildren');
     }
+
+    return;
+
 }
 
 sub _nodeid {
