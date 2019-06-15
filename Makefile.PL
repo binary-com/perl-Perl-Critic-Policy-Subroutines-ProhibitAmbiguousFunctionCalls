@@ -12,7 +12,7 @@ my %WriteMakefileArgs = (
   "BUILD_REQUIRES" => {
     "Digest::MD5" => 0,
     "Perl::Critic" => 0,
-    "Perl::Critic::Polic" => 0,
+    "Perl::Critic::Policy" => 0,
     "Perl::Critic::Utils" => 0
   },
   "CONFIGURE_REQUIRES" => {
