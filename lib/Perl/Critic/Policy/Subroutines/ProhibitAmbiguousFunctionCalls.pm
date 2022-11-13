@@ -7,7 +7,7 @@ use Digest::MD5;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.002';
+our $VERSION = '1.003';
 
 use constant DESC => q{Fully qualified functions calls should end in parens.};
 use constant EXPL => q{To differentiate from class methods and function calls, use Foo:Bar::baz()->gimble};

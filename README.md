@@ -1,39 +1,26 @@
-# perl-Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls
-[![Build Status](https://travis-ci.org/binary-com/perl-Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls.svg?branch=master)](https://travis-ci.org/binary-com/perl-Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls) 
-[![codecov](https://codecov.io/gh/binary-com/perl-Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls/branch/master/graph/badge.svg)](https://codecov.io/gh/binary-com/perl-Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls)
+# NAME
 
-A Perl::Critic policy that checks for ambiguous function calls
+Perl::Critic::Policy::Subroutines::ProhibitAmbiguousFunctionCalls - Don't call fully qualified function methods without parens
 
+# DESCRIPTION
 
-#### INSTALLATION
+When writing code like this...
 
+    Some::Class::Name::foo->mymethod
 
-To install this module, run the following commands:
+..it is not clear if 'foo' is part of the class, or a function within Some::Class::Name.
+The better way to write it is:
 
-    perl Makefile.PL
-    make
-    make test
-    make install
+    Some::Class::Name::foo()->method
 
-#### SUPPORT AND DOCUMENTATION
+# CONFIGURATION
 
-After installing, you can find documentation for this module with the
-perldoc command.
+- `method_always_ok` (string list, default is "new add")
 
-    perldoc Perl::Critic::Policy::Subroutines::ProhibitAmbiguousFunctionCalls
+    A list of method names which should always be considered "ok"
 
-You can also look for information at:
+- `uppercase_module_always_ok` (boolean, defaults to true)
 
-    Github issue tracker (report bugs here)
-        https://github.com/binary-com/perl-Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls/issues    
+    Indicates whether module names starting with an uppercase letter are considered "ok".
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Perl-Critic-Policy-Subroutines-ProhibitAmbiguousFunctionCalls
-
-####COPYRIGHT
-
-Copyright (C) 2018 binary.com
-
+    For example, Foo::Bar->pop; is considered ok by default, but Foo::bar->pop is not.
